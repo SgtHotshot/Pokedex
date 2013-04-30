@@ -77,6 +77,10 @@ margin-top: 5px; /* 0px; */
 margin-left: -30px;
 }
 
+#list::-webkit-scrollbar {
+display: none;
+}
+
 li{
 border-style: none solid none;
 border-color: #505050;
