@@ -5,9 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 public class PokemonContent implements Content {
 
+	
+	private String id = null;
+	
+	public PokemonContent(String id){
+		this.id = id;
+	}
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws ContentException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
