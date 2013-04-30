@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import content.Content;
+import content.ContentException;
+import content.PokemonContent;
+
 /**
  * Servlet implementation class ContentDeliver
  */
@@ -24,7 +28,14 @@ public class ContentDeliver extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String id = request.getParameter("ID");
+		try {
+			Content con = new PokemonContent(id);
+			con.execute(request, response);
+		} catch (ContentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
