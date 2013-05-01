@@ -27,7 +27,8 @@ public class ContentDeliver extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("ID");
+		String requestId = request.getParameter("ID");
+//		String requestName = request.getParameter("Name");
 		
 		// get values from db
 		
