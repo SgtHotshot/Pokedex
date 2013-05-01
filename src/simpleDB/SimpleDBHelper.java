@@ -94,8 +94,11 @@ public class SimpleDBHelper {
 	public Map<String, String> getPokemonByName(String name) {
 		
 		Map<String, String> answer = new HashMap<String, String>();
+		System.out.println("*"+name+"*");
+		name = name.replaceAll("\t", "");
+		System.out.println("*"+name+"*");
 		
-		String selectExpression = "select * from '" + DOMAIN_NAME + "' where Name = '" + name + "'";
+		String selectExpression = "select * from " + DOMAIN_NAME + " where Name = '" + name + "'";
 		System.out.println("Selecting: " + selectExpression + "\n");
 		SelectRequest selectRequest = new SelectRequest(selectExpression);
 		
