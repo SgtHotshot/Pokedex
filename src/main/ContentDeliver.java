@@ -34,8 +34,6 @@ public class ContentDeliver extends HttpServlet {
 		String requestId = request.getParameter("ID");
 		String requestName = request.getParameter("Name");
 
-		
-		
 		// get values from db
 		SimpleDBHelper sdb = new SimpleDBHelper();
 		Map<String, String> answers = null;

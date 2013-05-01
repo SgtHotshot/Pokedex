@@ -1,6 +1,4 @@
-//init();
-
-function loadPokemon(pokemonId){
+function loadPokemonById(pokemonId){
 	$.ajax({
 		url: 'ContentDeliver',
 		data: {
@@ -12,13 +10,20 @@ function loadPokemon(pokemonId){
 				//do nothing
 			}else{
 				//modify gui values
+				$("#name").html(data.pokemonId + " - " + data.name); // = id - name
+				$("#species").html(data.species);
+				$("#height").html(data.height);
+				$("#weight").html(data.weight);
+				$("#type").html(data.type);
+				$("#weakness").html(data.weakness);
+				$("#image").attr('src',data.imageUrl);
 			}
 		}
 		
 	});
 }
 
-function loadPokemon(name){
+function loadPokemonByName(name){
 	$.ajax({
 		url: 'ContentDeliver',
 		data: {
@@ -42,23 +47,3 @@ function loadPokemon(name){
 		
 	});
 }
-
-/*
-function init(){
-	$.ajax({
-		url: 'ContentDeliver',
-		data: {
-			ALL: "ALL"
-		},
-		dataType: 'json',
-		success: function(data) {
-			if(data == ""){
-				//do nothing
-			}else{
-				// load list
-			}
-		}
-		
-	});
-}
-*/
