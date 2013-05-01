@@ -19,7 +19,29 @@ function loadPokemon(pokemonId){
 }
 
 function loadPokemon(name){
-	
+	$.ajax({
+		url: 'ContentDeliver',
+		data: {
+			Name: name
+		},
+		dataType: 'json',
+		success: function(data) {
+			if(data == ""){
+				//do nothing
+			}else{
+				//modify gui values
+				$("#name") // = id - name
+				$("#species")
+				$("#height")
+				$("#weight")
+				$("#type")
+				$("#weakness")
+				$("#image")
+				
+			}
+		}
+		
+	});
 }
 
 /*
