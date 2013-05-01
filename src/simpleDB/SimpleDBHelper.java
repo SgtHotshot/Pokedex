@@ -118,6 +118,21 @@ public class SimpleDBHelper {
 				answer.put(attribute.getName(), attribute.getValue());
 			}
 		}
+		if(answer.isEmpty()){
+			System.out.println("answer is empty");
+			String selectExpression2 = "select * from " + DOMAIN_NAME + " where ID = '" + name + "'";
+			System.out.println("Selecting: " + selectExpression2 + "\n");
+			SelectRequest selectRequest2 = new SelectRequest(selectExpression2);
+
+			for(Item item : sdb.select(selectRequest2).getItems()){
+				System.out.println("Item Name: " + item.getName());
+				for(Attribute attribute : item.getAttributes()){
+					System.out.println("Attribute Name: " + attribute.getName());
+					System.out.println("Attribute Value: " + attribute.getValue());
+					answer.put(attribute.getName(), attribute.getValue());
+				}
+			}
+		}
 		
 		return answer;	
 	}
