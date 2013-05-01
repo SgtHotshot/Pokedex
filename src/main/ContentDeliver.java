@@ -1,10 +1,14 @@
 package main;
 
 import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import simpleDB.SimpleDBHelper;
 
 import com.amazonaws.util.json.JSONException;
 import com.amazonaws.util.json.JSONObject;
@@ -31,15 +35,17 @@ public class ContentDeliver extends HttpServlet {
 //		String requestName = request.getParameter("Name");
 		
 		// get values from db
+		SimpleDBHelper sdb = new SimpleDBHelper();
+		Map<String, String> answers = sdb.getPokemonByID(requestId);
 		
-		String pokemonId = "";
-		String name = "";
-		String species = "";
-		String height = "";
-		String weight = "";
-		String type = "";
-		String weakness = "";
-		String imageUrl = "";
+		String pokemonId = answers.get("ID");
+		String name = answers.get("Name");
+		String species = answers.get("Species");
+		String height = answers.get("Height");
+		String weight = answers.get("Weight (lbs)");
+		String type = answers.get("Type");
+		String weakness = answers.get("Weaknesses");
+		String imageUrl = answers.get("URL");
 		
 		JSONObject result = new JSONObject();
 		try {

@@ -39,7 +39,7 @@ public class SimpleDBHelper {
 	 * @param accessKey
 	 * @param secretKey
 	 */
-	public SimpleDBHelper(String accessKey, String secretKey) {
+	public SimpleDBHelper() {
 
 		sdb = new AmazonSimpleDBClient(new ClasspathPropertiesFileCredentialsProvider());
 		Region usEast1 = Region.getRegion(Regions.US_EAST_1);
