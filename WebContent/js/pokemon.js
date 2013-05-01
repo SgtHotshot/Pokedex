@@ -1,3 +1,5 @@
+loadPokemonByName("Bulbasaur");
+
 function loadPokemonById(pokemonId){
 	$.ajax({
 		url: 'ContentDeliver',
@@ -46,4 +48,17 @@ function loadPokemonByName(name){
 		}
 		
 	});
+}
+
+function search(){
+	var searchName = $("#search-box").val();
+	if(searchName != ''){
+		loadPokemonByName(searchName);
+	}
+}
+
+function enterPressed(){
+	if(event.keyCode == 13){
+		search();
+	}
 }

@@ -55,7 +55,10 @@ public class ContentDeliver extends HttpServlet {
 			String type = answers.get("Type");
 			String weakness = answers.get("Weaknesses");
 			String imageUrl = answers.get("URL");
-		
+			
+			type = type.replaceAll(";", ", ");
+			weakness = weakness.replaceAll(";", ", ");
+			
 			try {
 				result.put("pokemonId",pokemonId);
 				result.put("name",name);

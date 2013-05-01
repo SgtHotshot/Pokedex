@@ -28,11 +28,11 @@
     			
     			<div class="stats">
     			
-    			<p>Species : <span id="species">Bulb</span> Pokemon</p>
-    			<p>Height : <span id="height">3'03"</span></p>
-    			<p>Weight : <span id="weight">14.5</span> lbs</p>
-    			<p>Type : <span id="type">Grass</span></p>
-    			<p>Weakness : <span id="weakness">Fire, Ice, Flying</span></p>
+	    			<p>Species : <span id="species"></span> Pokemon</p>
+	    			<p>Height : <span id="height">"</span></p>
+	    			<p>Weight : <span id="weight"></span> lbs</p>
+	    			<p>Type : <span id="type"></span></p>
+	    			<p>Weakness : <span id="weakness"></span></p>
     			
     			</div>
       		
@@ -40,13 +40,13 @@
       		
     		<span class="inner-span-left">
     		
-    			<input id="search-box"></input>
+    			<input id="search-box" onkeydown="enterPressed()"></input>
     			
-    			<button id="search-button">Search</button>
+    			<button id="search-button" onclick="search()">Search</button>
     			
     			<ul id="list">
     				<li onclick="loadPokemonByName(this.innerHTML)">	Bulbasaur	</li>
-					<li onClick= "loadPokemonByName(this.innerHTML)">	Ivysaur	</li>
+					<li onclick= "loadPokemonByName(this.innerHTML)">	Ivysaur	</li>
 					<li onclick="loadPokemonByName(this.innerHTML)">	Venusaur	</li>
 					<li onclick="loadPokemonByName(this.innerHTML)">	Charmander	</li>
 					<li onclick="loadPokemonByName(this.innerHTML)">	Charmeleon	</li>
