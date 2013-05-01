@@ -32,35 +32,45 @@ public class ContentDeliver extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String requestId = request.getParameter("ID");
-//		String requestName = request.getParameter("Name");
+		String requestName = request.getParameter("Name");
+
+		
 		
 		// get values from db
 		SimpleDBHelper sdb = new SimpleDBHelper();
-		Map<String, String> answers = sdb.getPokemonByID(requestId);
+		Map<String, String> answers = null;
 		
-		String pokemonId = answers.get("ID");
-		String name = answers.get("Name");
-		String species = answers.get("Species");
-		String height = answers.get("Height");
-		String weight = answers.get("Weight (lbs)");
-		String type = answers.get("Type");
-		String weakness = answers.get("Weaknesses");
-		String imageUrl = answers.get("URL");
-		
-		JSONObject result = new JSONObject();
-		try {
-			result.put("pokemonId",pokemonId);
-			result.put("name",name);
-			result.put("species",species);
-			result.put("height",height);
-			result.put("weight",weight);
-			result.put("type",type);
-			result.put("weakness",weakness);
-			result.put("imageUrl",imageUrl);
-		} catch (JSONException e) {
-			System.out.println("JSON object failed to create.");
+		if(requestId == null && requestName != null){
+			answers = sdb.getPokemonByName(requestName);
+		}else if(requestId != null && requestName == null){
+			answers = sdb.getPokemonByID(requestId);
 		}
 		
+		JSONObject result = new JSONObject();
+		
+		if(answers != null){
+			String pokemonId = answers.get("ID");
+			String name = answers.get("Name");
+			String species = answers.get("Species");
+			String height = answers.get("Height");
+			String weight = answers.get("Weight (lbs)");
+			String type = answers.get("Type");
+			String weakness = answers.get("Weaknesses");
+			String imageUrl = answers.get("URL");
+		
+			try {
+				result.put("pokemonId",pokemonId);
+				result.put("name",name);
+				result.put("species",species);
+				result.put("height",height);
+				result.put("weight",weight);
+				result.put("type",type);
+				result.put("weakness",weakness);
+				result.put("imageUrl",imageUrl);
+			} catch (JSONException e) {
+				System.out.println("JSON object failed to create.");
+			}
+		}
 		response.getWriter().print(result.toString());
 	}
 
