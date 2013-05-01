@@ -6,9 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import content.Content;
-import content.ContentException;
-import content.PokemonContent;
+import com.amazonaws.util.json.JSONException;
+import com.amazonaws.util.json.JSONObject;
 
 /**
  * Servlet implementation class ContentDeliver
@@ -28,14 +27,35 @@ public class ContentDeliver extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("ID");
+		String requestId = request.getParameter("ID");
+//		String requestName = request.getParameter("Name");
+		
+		// get values from db
+		
+		String pokemonId = "";
+		String name = "";
+		String species = "";
+		String height = "";
+		String weight = "";
+		String type = "";
+		String weakness = "";
+		String imageUrl = "";
+		
+		JSONObject result = new JSONObject();
 		try {
-			Content con = new PokemonContent(id);
-			con.execute(request, response);
-		} catch (ContentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			result.put("pokemonId",pokemonId);
+			result.put("name",name);
+			result.put("species",species);
+			result.put("height",height);
+			result.put("weight",weight);
+			result.put("type",type);
+			result.put("weakness",weakness);
+			result.put("imageUrl",imageUrl);
+		} catch (JSONException e) {
+			System.out.println("JSON object failed to create.");
 		}
+		
+		response.getWriter().print(result.toString());
 	}
 
 	/**
