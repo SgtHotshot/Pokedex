@@ -58,7 +58,7 @@ public class SimpleDBHelper {
 
 	public Map<String, String> getPokemonByID(String id) {
 
-		// If this doesn�t work, do it like the rest; with a query.
+		// If this doesn’t work, do it like the rest; with a query.
 
 //		try {
 //			GetAttributesRequest request = new GetAttributesRequest();
@@ -95,6 +95,16 @@ public class SimpleDBHelper {
 		
 		Map<String, String> answer = new HashMap<String, String>();
 		name = name.replaceAll("\t", "");
+
+		// could not figure out these symbols
+//		if(name.contains("♂") || name.contains("♂") || name.contains("♀") || name.contains("♀")){
+//			System.out.println("contains symbols");
+//		}else{
+//			System.out.println("doesn't contain symbols");
+//		}
+//		name = name.replaceAll("\u2642", "0x2462");
+//		name = name.replaceAll("\u2640", "0x2640");
+		
 		
 		String selectExpression = "select * from " + DOMAIN_NAME + " where Name = '" + name + "'";
 		System.out.println("Selecting: " + selectExpression + "\n");
